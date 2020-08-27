@@ -43,7 +43,7 @@ namespace CurrencyToWords
                 throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {amount}", nameof(amount));
             }
 
-            if (amount == 0)
+            if (amount < 0.01m)
             {
                 return "zero dollars";
             }

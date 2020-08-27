@@ -78,5 +78,15 @@ namespace CurrencyToWords.Tests
             var number = -1;
             Assert.Throws<ArgumentException>(() => number.CurrencyToWords());
         }
+
+        [TestCase(0.001, "zero dollars")]
+        [TestCase(0.009999, "zero dollars")]
+        [TestCase(12.301, "twelve dollars and thirty cents")]
+        [TestCase(123.001, "one hundred and twenty three dollars")]
+        public void FractionalCentsAreIgnored(decimal amount, string expected)
+        {
+            var result = amount.CurrencyToWords();
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
