@@ -10,6 +10,8 @@ The function accepts numbers between 0 and 1000. It throws an ArgumentException 
 
 The fractional cents are ignored (eg. 0.003 would be translated to "zero dollars")
 
+Only English language is supported and currency is assumed to be called dollars its fraction -- cents.
+
 # Notes
 
 The library was written in a TDD (test-first) manner with small implementation steps.
