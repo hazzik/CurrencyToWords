@@ -25,7 +25,22 @@ namespace CurrencyToWords.Tests
         [TestCase(17, "seventeen")]
         [TestCase(18, "eighteen")]
         [TestCase(19, "nineteen")]
-        public void NumberToWordsUnderTwenty(long number, string expected)
+        public void NumbersUnderTwenty(long number, string expected)
+        {
+            var result = number.ToWords();
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
+        [TestCase(10, "ten")]
+        [TestCase(20, "twenty")]
+        [TestCase(30, "thirty")]
+        [TestCase(40, "forty")]
+        [TestCase(50, "fifty")]
+        [TestCase(60, "sixty")]
+        [TestCase(70, "seventy")]
+        [TestCase(80, "eighty")]
+        [TestCase(90, "ninety")]
+        public void WholeTens(long number, string expected)
         {
             var result = number.ToWords();
             Assert.That(result, Is.EqualTo(expected));
