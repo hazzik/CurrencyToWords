@@ -84,5 +84,13 @@ namespace CurrencyToWords.Tests
             var result = number.ToWords();
             Assert.That(result, Is.EqualTo(expected));
         }
+
+        [Test]
+        public void OneThousand()
+        {
+            var number = 1000;
+            var result = number.ToWords();
+            Assert.That(result, Is.EqualTo("one thousand"));
+        }
     }
 }

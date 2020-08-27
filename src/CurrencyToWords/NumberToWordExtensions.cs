@@ -15,9 +15,12 @@ namespace CurrencyToWords
             "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
         };
 
+        public static string ToWords(this int number) => ToWords((long) number);
+
         public static string ToWords(this long number)
         {
             if (number == 0) return "zero";
+            if (number == 1000) return "one thousand";
 
             var parts = new List<string>();
             if (number >= 100)
