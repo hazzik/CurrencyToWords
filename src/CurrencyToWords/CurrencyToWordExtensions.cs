@@ -5,6 +5,8 @@ namespace CurrencyToWords
 {
     public static class CurrencyToWordExtensions
     {
+        private const int CentsInADollar = 100;
+
         /// <summary>
         /// An extension method to return a dollar value written ot in English words
         /// </summary>
@@ -66,18 +68,18 @@ namespace CurrencyToWords
         }
 
         private static string CentsAsWords(long cents) => 
-            $"{cents.ToWords()} cent{Inflection(cents)}";
+            $"{cents.ToWords()} cent{InflectEnding(cents)}";
 
         private static string DollarsAsWords(long dollars) => 
-            $"{dollars.ToWords()} dollar{Inflection(dollars)}";
+            $"{dollars.ToWords()} dollar{InflectEnding(dollars)}";
 
         private static long GetWholeDollars(decimal amount) => 
             (long) amount;
 
-        private static long GetOnlyCents(decimal amount) => 
-            (long) (amount * 100 % 100);
+        private static long GetOnlyCents(decimal amount) =>
+            (long) (amount * CentsInADollar % CentsInADollar);
 
-        private static string Inflection(long amount)
+        private static string InflectEnding(long amount)
         {
             if (amount % 10 == 1 && amount % 100 != 11) return string.Empty;
             return "s";
