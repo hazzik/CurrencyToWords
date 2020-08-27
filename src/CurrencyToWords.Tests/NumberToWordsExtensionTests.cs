@@ -45,7 +45,22 @@ namespace CurrencyToWords.Tests
             var result = number.ToWords();
             Assert.That(result, Is.EqualTo(expected));
         }
-        
+
+        [TestCase(100, "one hundred")]
+        [TestCase(200, "two hundred")]
+        [TestCase(300, "three hundred")]
+        [TestCase(400, "four hundred")]
+        [TestCase(500, "five hundred")]
+        [TestCase(600, "six hundred")]
+        [TestCase(700, "seven hundred")]
+        [TestCase(800, "eight hundred")]
+        [TestCase(900, "nine hundred")]
+        public void WholeHundreds(long number, string expected)
+        {
+            var result = number.ToWords();
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(31, "thirty one")]
         [TestCase(55, "fifty five")]
         [TestCase(63, "sixty three")]

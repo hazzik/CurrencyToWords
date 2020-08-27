@@ -1,33 +1,46 @@
-﻿namespace CurrencyToWords
+﻿using System.Collections.Generic;
+
+namespace CurrencyToWords
 {
     public static class NumberToWordExtensions
     {
         private static readonly string[] Units = 
         {
-            "zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", 
+            "", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", 
             "ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen"
         };
 
         private static readonly string[] Tens =
         {
-            "zero", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
+            "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
         };
 
         public static string ToWords(this long number)
         {
-            if (number < 20)
+            if (number == 0) return "zero";
+
+            var parts = new List<string>();
+            if (number >= 100)
             {
-                return Units[number];
+                var hundreds = number / 100;
+                parts.Add(Units[hundreds]);
+                parts.Add("hundred");
+                number %= 100;
             }
 
-            var units = number % 10;
-            var tens = number / 10;
-            if (units == 0)
+            if (number >= 20)
             {
-                return Tens[tens];
+                var tens = number / 10;
+                parts.Add(Tens[tens]);
+                number %= 10;
             }
 
-            return Tens[tens] + " " + Units[units];
+            if (number > 0)
+            {
+                parts.Add(Units[number]);
+            }
+
+            return string.Join(" ", parts);
         }
     }
 }
