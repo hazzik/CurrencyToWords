@@ -26,6 +26,8 @@ namespace CurrencyToWords
                 parts.Add(Units[hundreds]);
                 parts.Add("hundred");
                 number %= 100;
+
+                if (number > 0) parts.Add("and");
             }
 
             if (number >= 20)
