@@ -36,7 +36,10 @@ namespace CurrencyToWords
         /// </summary>
         public static string ToWords(this long number)
         {
-            if (number > 1000 || number < 0) throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {number}", nameof(number));
+            if (number > 1000 || number < 0)
+            {
+                throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {number}", nameof(number));
+            }
 
             if (number == 0) return "zero";
             if (number == 1000) return "one thousand";

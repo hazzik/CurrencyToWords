@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 
 namespace CurrencyToWords
 {
@@ -22,13 +23,26 @@ namespace CurrencyToWords
         /// <summary>
         /// An extension method to return a dollar value written ot in English words
         /// </summary>
-        public static string CurrencyToWords(this long amount) => DollarsAsWords(amount);
+        public static string CurrencyToWords(this long amount)
+        {
+            if (amount > 1000 || amount < 0)
+            {
+                throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {amount}", nameof(amount));
+            }
+            
+            return DollarsAsWords(amount);
+        }
 
         /// <summary>
         /// An extension method to return a dollar value written ot in English words
         /// </summary>
         public static string CurrencyToWords(this decimal amount)
         {
+            if (amount > 1000 || amount < 0)
+            {
+                throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {amount}", nameof(amount));
+            }
+
             if (amount == 0)
             {
                 return "zero dollars";

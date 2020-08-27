@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 
 namespace CurrencyToWords.Tests
 {
@@ -62,6 +63,20 @@ namespace CurrencyToWords.Tests
         {
             var result = amount.CurrencyToWords();
             Assert.That(result, Is.EqualTo(expected));
+        }
+       
+        [Test]
+        public void ThrowIfAboveAThousand()
+        {
+            var number = 1001;
+            Assert.Throws<ArgumentException>(() => number.CurrencyToWords());
+        }
+       
+        [Test]
+        public void ThrowIfNegative()
+        {
+            var number = -1;
+            Assert.Throws<ArgumentException>(() => number.CurrencyToWords());
         }
     }
 }
