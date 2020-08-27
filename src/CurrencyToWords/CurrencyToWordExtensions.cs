@@ -8,22 +8,22 @@ namespace CurrencyToWords
         private const int CentsInADollar = 100;
 
         /// <summary>
-        /// An extension method to return a dollar value written ot in English words
+        /// An extension method to return a dollar value written out in English words
         /// </summary>
         public static string CurrencyToWords(this byte amount) => CurrencyToWords((long) amount);
 
         /// <summary>
-        /// An extension method to return a dollar value written ot in English words
+        /// An extension method to return a dollar value written out in English words
         /// </summary>
         public static string CurrencyToWords(this short amount) => CurrencyToWords((long) amount);
 
         /// <summary>
-        /// An extension method to return a dollar value written ot in English words
+        /// An extension method to return a dollar value written out in English words
         /// </summary>
         public static string CurrencyToWords(this int amount) => CurrencyToWords((long) amount);
 
         /// <summary>
-        /// An extension method to return a dollar value written ot in English words
+        /// An extension method to return a dollar value written out in English words
         /// </summary>
         public static string CurrencyToWords(this long amount)
         {
@@ -36,7 +36,7 @@ namespace CurrencyToWords
         }
 
         /// <summary>
-        /// An extension method to return a dollar value written ot in English words
+        /// An extension method to return a dollar value written out in English words
         /// </summary>
         public static string CurrencyToWords(this decimal amount)
         {

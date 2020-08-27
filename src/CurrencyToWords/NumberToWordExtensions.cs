@@ -17,22 +17,22 @@ namespace CurrencyToWords
         };
 
         /// <summary>
-        /// An extension method to return a number written ot in English words
+        /// An extension method to return a number written out in English words
         /// </summary>
         public static string ToWords(this byte number) => ToWords((long) number);
 
         /// <summary>
-        /// An extension method to return a number written ot in English words
+        /// An extension method to return a number written out in English words
         /// </summary>
         public static string ToWords(this short number) => ToWords((long) number);
 
         /// <summary>
-        /// An extension method to return a number written ot in English words
+        /// An extension method to return a number written out in English words
         /// </summary>
         public static string ToWords(this int number) => ToWords((long) number);
 
         /// <summary>
-        /// An extension method to return a number written ot in English words
+        /// An extension method to return a number written out in English words
         /// </summary>
         public static string ToWords(this long number)
         {
