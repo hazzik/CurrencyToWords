@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CurrencyToWords
+﻿namespace CurrencyToWords
 {
     public static class NumberToWordExtensions
     {
@@ -18,9 +16,18 @@ namespace CurrencyToWords
         public static string ToWords(this long number)
         {
             if (number < 20)
+            {
                 return Units[number];
+            }
 
-            return Tens[number / 10];
+            var units = number % 10;
+            var tens = number / 10;
+            if (units == 0)
+            {
+                return Tens[tens];
+            }
+
+            return Tens[tens] + " " + Units[units];
         }
     }
 }

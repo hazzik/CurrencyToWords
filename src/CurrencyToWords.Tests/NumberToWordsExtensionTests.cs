@@ -45,5 +45,15 @@ namespace CurrencyToWords.Tests
             var result = number.ToWords();
             Assert.That(result, Is.EqualTo(expected));
         }
+        
+        [TestCase(31, "thirty one")]
+        [TestCase(55, "fifty five")]
+        [TestCase(63, "sixty three")]
+        [TestCase(69, "sixty nine")]
+        public void NumbersUnderAHundred(long number, string expected)
+        {
+            var result = number.ToWords();
+            Assert.That(result, Is.EqualTo(expected));
+        }
     }
 }
