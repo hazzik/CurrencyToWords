@@ -16,8 +16,24 @@ namespace CurrencyToWords
             "", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"
         };
 
+        /// <summary>
+        /// An extension method to return a number written ot in English words
+        /// </summary>
+        public static string ToWords(this byte number) => ToWords((long) number);
+
+        /// <summary>
+        /// An extension method to return a number written ot in English words
+        /// </summary>
+        public static string ToWords(this short number) => ToWords((long) number);
+
+        /// <summary>
+        /// An extension method to return a number written ot in English words
+        /// </summary>
         public static string ToWords(this int number) => ToWords((long) number);
 
+        /// <summary>
+        /// An extension method to return a number written ot in English words
+        /// </summary>
         public static string ToWords(this long number)
         {
             if (number > 1000 || number < 0) throw new ArgumentException($"Only numbers between 0 and 1000 are supported, got {number}", nameof(number));

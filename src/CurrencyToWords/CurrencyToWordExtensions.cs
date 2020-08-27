@@ -4,6 +4,29 @@ namespace CurrencyToWords
 {
     public static class CurrencyToWordExtensions
     {
+        /// <summary>
+        /// An extension method to return a dollar value written ot in English words
+        /// </summary>
+        public static string CurrencyToWords(this byte amount) => CurrencyToWords((long) amount);
+
+        /// <summary>
+        /// An extension method to return a dollar value written ot in English words
+        /// </summary>
+        public static string CurrencyToWords(this short amount) => CurrencyToWords((long) amount);
+
+        /// <summary>
+        /// An extension method to return a dollar value written ot in English words
+        /// </summary>
+        public static string CurrencyToWords(this int amount) => CurrencyToWords((long) amount);
+
+        /// <summary>
+        /// An extension method to return a dollar value written ot in English words
+        /// </summary>
+        public static string CurrencyToWords(this long amount) => DollarsAsWords(amount);
+
+        /// <summary>
+        /// An extension method to return a dollar value written ot in English words
+        /// </summary>
         public static string CurrencyToWords(this decimal amount)
         {
             if (amount == 0)
@@ -17,23 +40,28 @@ namespace CurrencyToWords
             var parts = new List<string>();
             if (dollars > 0)
             {
-                parts.Add($"{dollars.ToWords()} dollar{Inflection(dollars)}");
+                parts.Add(DollarsAsWords(dollars));
             }
 
             if (cents > 0)
             {
-                parts.Add($"{cents.ToWords()} cent{Inflection(cents)}");
+                parts.Add(CentsAsWords(cents));
             }
 
             return string.Join(" and ", parts);
         }
-  
-        private static long GetWholeDollars(decimal amount) => (long) amount;
 
-        private static long GetOnlyCents(decimal amount)
-        {
-            return (long) (amount * 100 % 100);
-        }
+        private static string CentsAsWords(long cents) => 
+            $"{cents.ToWords()} cent{Inflection(cents)}";
+
+        private static string DollarsAsWords(long dollars) => 
+            $"{dollars.ToWords()} dollar{Inflection(dollars)}";
+
+        private static long GetWholeDollars(decimal amount) => 
+            (long) amount;
+
+        private static long GetOnlyCents(decimal amount) => 
+            (long) (amount * 100 % 100);
 
         private static string Inflection(long amount)
         {

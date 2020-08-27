@@ -14,6 +14,15 @@ namespace CurrencyToWords.Tests
             Assert.That(result, Is.EqualTo(expected));
         }
 
+        [TestCase(10, "ten dollars")]
+        [TestCase(23, "twenty three dollars")]
+        [TestCase(234, "two hundred and thirty four dollars")]
+        public void WholeAmounts(long amount, string expected)
+        {
+            var result = amount.CurrencyToWords();
+            Assert.That(result, Is.EqualTo(expected));
+        }
+
         [TestCase(1, "one dollar")]
         [TestCase(11, "eleven dollars")]
         [TestCase(21, "twenty one dollar")]
